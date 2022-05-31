@@ -1,7 +1,48 @@
+#solar {
+    height: 50px;
+}
+
 .buttons{
     background-color: #f1f1f1;
 }
 
 .funct-button{
     background-color: #c82c3d;
+}
+
+.calc-container {
+    height: 800px;
+}
+
+.numerical-display {
+    margin: 5% 10%;
+    background-color: #adadac;
+    font-size: 2.5rem;
+    border: 5px solid #39474d;
+}
+
+.texas-instruments {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.make-model {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 10%;
+    color: #fff;
+}
+
+.model {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.divider {
+    margin: 3% auto;
+    border-top: 1px solid rgb(29, 29, 29);
+    width: 95%;
 }
