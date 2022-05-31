@@ -36,6 +36,7 @@
 }
 
 .model {
+    font-family: 'Space Mono', monospace;
     font-size: 2rem;
     font-weight: 700;
     line-height: 1;
