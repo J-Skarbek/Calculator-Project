@@ -4,21 +4,21 @@ let inputThree;
 
 function add(inputOne, inputTwo) {
     let result = inputOne + inputTwo;
-    return result;
+    return Number(result.toFixed(3));
 }
 
 function subtract(inputOne, inputTwo) {
     let result = inputOne - inputTwo;
-    return result;
+    return Number(result.toFixed(3));
 }
 
-function mulitply(inputOne, inputTwo) {
+function multiply(inputOne, inputTwo) {
     let result = inputOne * inputTwo;
-    return result;
+    return Number(result.toFixed(3));
 }
 
 function divide(inputOne, inputTwo) {
     let result = inputOne / inputTwo;
-    return result;
+    return Number(result.toFixed(3));
 }
 
