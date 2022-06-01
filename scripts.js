@@ -1,6 +1,6 @@
-let inputOne = '';
-let inputTwo = '';
-let inputThree = '';
+let inputOne;
+let inputTwo;
+let inputThree;
 
 function add(inputOne, inputTwo) {
     let result = inputOne + inputTwo;
