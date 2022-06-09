@@ -2,32 +2,45 @@ let inputOne;
 let inputTwo;
 let inputThree;
 
+const equalsButton = document.getElementById('operate');
+const clearButton = document.getElementById('ON-C');
+const decimalButton = document.getElementById('decimal');
+const numberButtons = document.querySelectorAll('.buttons');
+const functionButtons = document.querySelectorAll('.funct-button');
+
+const lastOperationScreen = document.getElementById('lastOperationScreen');
+const currentOperationScreen = document.getElementById('currentOperationScreen');
+
+
 const buttons = document.querySelectorAll('.buttons');
 
 
-let add = (inputOne, inputTwo) => {
+window.addEventListener('keydown', handleKeyboardInput);
+
+
+const add = (inputOne, inputTwo) => {
     let result = inputOne + inputTwo;
     return Number(result.toFixed(3));
 }
 
-let subtract = (inputOne, inputTwo) => {
+const subtract = (inputOne, inputTwo) => {
     let result = inputOne - inputTwo;
     return Number(result.toFixed(3));
 }
 
-let multiply = (inputOne, inputTwo) => {
+const multiply = (inputOne, inputTwo) => {
     let result = inputOne * inputTwo;
     return Number(result.toFixed(3));
 }
 
-let divide = (inputOne, inputTwo) => {
+const divide = (inputOne, inputTwo) => {
     let result = inputOne / inputTwo;
     return Number(result.toFixed(3));
 }
 
+function handleKeyboardInput(e) {
 
-
-// function calculate() {};
+}
 
 
 
