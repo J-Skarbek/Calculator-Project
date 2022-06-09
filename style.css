@@ -19,19 +19,28 @@ input[type=number] {
     height: 50px;
 }
 
-.buttons{
+.buttons {
     background-color: #f1f1f1;
 }
 
-.funct-button{
+.buttons:hover {
+    background-color: #ddd;
+
+}
+
+.funct-button {
     background-color: #c82c3d;
+}
+
+.funct-button:hover {
+    background-color: #a32130;
 }
 
 .calc-container {
     height: 800px;
 }
 
-.display-info{
+.display-info {
     height: 100px;
 }
 
