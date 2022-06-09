@@ -12,10 +12,11 @@ const lastOperationScreen = document.getElementById('lastOperationScreen');
 const currentOperationScreen = document.getElementById('currentOperationScreen');
 
 
-const buttons = document.querySelectorAll('.buttons');
-
-
 window.addEventListener('keydown', handleKeyboardInput);
+equalsButton.addEventListener('click', evaluate);
+clearButton.addEventListener('click', clear);
+
+decimalButton.addEventListener('click', appendDecimal);
 
 
 const add = (inputOne, inputTwo) => {
