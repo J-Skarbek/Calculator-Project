@@ -1,5 +1,6 @@
 input {
     all: unset;
+    width: 100%;
   }
 
 /* Chrome, Safari, Edge, Opera */

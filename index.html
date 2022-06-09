@@ -35,8 +35,8 @@
             <div class="display-info col-start-1 col-span-4">   
                 <div class="etcetera">
                     <div class="numerical-display col-start-2 col-span-4">
-                        <input type="number" id="display-screen" min="0" max="999999999" value="0">
-                        <span>6969696969</span>
+                        <div class="screen-last" id="lastOperationScreen"></div>
+                        <div class="screen-current" id="currentOperationsScreen">0</div>
                     </div>
                     <div class="make-model">
                         <p class="texas-instruments">TEXAS INSTRUMENTS</p>
@@ -74,7 +74,7 @@
                     <button class="buttons border-solid border border-zinc-900 rounded-sm p-2 m-1" id="btn-2">
                         <kbd>2</kbd>
                     </button>
-                    <button class="buttons border-solid border border-zinc-900 rounded-sm p-2 m-1" id="0">
+                    <button class="buttons border-solid border border-zinc-900 rounded-sm p-2 m-1" id="btn-0">
                         <kbd>0</kbd>
                     </button>
                 </div>
@@ -89,7 +89,7 @@
                     <button class="buttons border-solid border border-zinc-900 rounded-sm p-2 m-1" id="btn-3">
                         <kbd>3</kbd>
                     </button>
-                    <button class="buttons border-solid border border-zinc-900 rounded-sm p-2 m-1" id="deci">
+                    <button class="buttons border-solid border border-zinc-900 rounded-sm p-2 m-1" id="decimal">
                         <kbd>.</kbd>
                     </button>
                 </div>
@@ -107,7 +107,7 @@
                     <button class="funct-button border-solid border border-zinc-900 rounded-sm p-2 m-1" id="add">
                         <kbd>+</kbd>
                     </button>
-                    <button class="funct-button border-solid border border-zinc-900 rounded-sm p-2 m-1" id="total">
+                    <button class="funct-button border-solid border border-zinc-900 rounded-sm p-2 m-1" id="operate">
                         <kbd>Enter</kbd>
                     </button>
                 </div>

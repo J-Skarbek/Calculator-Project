@@ -2,6 +2,9 @@ let inputOne;
 let inputTwo;
 let inputThree;
 
+const buttons = document.querySelectorAll('.buttons');
+
+
 let additionResult = add();
 let subtractionResult = subtract();
 let mulitplicationResult = multiply();
