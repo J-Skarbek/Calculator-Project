@@ -38,14 +38,39 @@ window.addEventListener('keydown', handleKeyInput);
 
 numberButtons.forEach((button) =>
     button.addEventListener('click', () => appendNumber(button.textContent))
-)
+);
+
+functionButtons.forEach((button) =>
+    button.addEventListener('click', () => setOperation(button.textContent))
+);
 
 // function limitInput(string = '' , limit = 9) {
 //     return string.substring(0, limit)
 // }
 
 function appendNumber(number) {
-    currentOperationScreen.textContent += number;
+    currentOperationScreen.textContent += number; 
+}
+
+function setOperation(operator) {
+    if (currentOperation !== null) {
+        evaluate();
+        firstOperand = currentOperationScreen.textContent;
+        currentOperation = operator;
+        lastOperationScreen.textContent = `${firstOperand} ${currentOperation}`;
+        // shouldResetScreen = true;
+    }
+}
+
+function evaluate() {
+    if (currentOperation === null) {
+        return;
+    }
+    if (currentOperation === '' && currentOperationScreen.textContent === '0') {
+        alert("You can't divide by 0!");
+        return;
+    }
+    secondOperand = currentOperationScreen.textContent;
     
 }
 
@@ -54,6 +79,24 @@ function handleKeyInput(e) {
         appendNumber(e.key);
         console.log(e.key);
         console.log(e);
+    }
+    if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+        setOperation(convertOperator(e.key));
+    }
+}
+
+function convertOperator(keyboardOperator) {
+    if (keyboardOperator === '/') {
+        return '÷';
+    }
+    if (keyboardOperator === '*') {
+        return '*';
+    }
+    if (keyboardOperator === '-') {
+        return '-';
+    }
+    if (keyboardOperator === '+') {
+        return '+';
     }
 }
 
