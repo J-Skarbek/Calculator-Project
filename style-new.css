@@ -90,9 +90,10 @@ a:visited {
 }
 
 .project-container {
+    height: 100vh;
     display: grid;
     grid-template-columns: repeat(12, minmax(100px, 1fr));
-    grid-template-rows: repeat(12, minmax(75px, 1fr));
+    grid-template-rows: repeat(12, minmax(50px, 1fr));
 }
 
 .project-container > div:nth-child(odd) {
@@ -114,6 +115,21 @@ a:visited {
     grid-row: 3 / span 8;
     padding: 15px 25px;
     background-color: var(--off-white);
+    display: grid;
+    grid-template-columns: repeat(12, minmax(25px, 1fr));
+    grid-template-rows: repeat(12, minmax(25px, 1fr));
+}
+
+.calculator {
+    background-color: var(--light-purp);
+    border: 2px solid var(--mid-purp);
+    border-radius: 15px;
+    padding: 20px;
+    grid-column: 5 / span 4;
+    grid-row: 2 / span 10;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(20px, 1fr));
+    grid-template-rows: repeat(8, minmax(20px, 1fr));
 }
 
 .footer {
