@@ -22,18 +22,18 @@ numberButtons.forEach(button => {
   button.addEventListener('click', (e) => {
     console.log(e.target.value);
     inputValue = e.target.value;
-    inputField.textContent += `${inputValue}`;
+    inputOne = inputField.textContent += `${inputValue}`;
   });  
   button.addEventListener('keydown', (e) => {
     console.log(e.key);
     inputValue = e.key;
-    inputField.textContent += `${inputValue}`;
+    inputOne = inputField.textContent += `${inputValue}`;
   });
 });
 
 operationButtons.forEach(button => {
   button.addEventListener('click', (e) => {
-    console.log(e.target.value);
+    console.log(e.key);
   });
   button.addEventListener('keydown', (e) => {
     console.log(e.key);
@@ -49,10 +49,8 @@ onClearButton.addEventListener('click', () => {
 });
 
 deleteButton.addEventListener('click',() => {
-
-})
-
-
+  inputOne.slice(-1).textContent;
+});
 
 const functionButtons = document.querySelectorAll('.funct-button');
 
