@@ -13,13 +13,21 @@ const multiplyButton = document.getElementById('multiply');
 const divideButton = document.getElementById('divide');
 const addButton = document.getElementById('add');
 const subtractButton = document.getElementById('subtract');
+const inputField = document.getElementById('display');
 
-const numberButtons = document.querySelectorAll('.buttons');
+const numberButtons = Array.from(document.querySelectorAll('.number'));
+numberButtons.forEach(button => {
+  button.addEventListener('click', (e) => {
+    console.log(e.target.value);
+    inputOne = e.target.value;
+    inputField.textContent = `${inputOne}`;
+  });  
+});
+
 const functionButtons = document.querySelectorAll('.funct-button');
 
 const lastOperationScreen = document.getElementById('lastOperationScreen');
 const currentOperationScreen = document.getElementById('currentOperationScreen');
-
 
 const add = (inputOne, inputTwo) => {
   let result = inputOne + inputTwo;
@@ -53,8 +61,10 @@ function handleKeyboardInput(e) {
 }
 
 function convertOperator(keyboardOperator) {
-  if (keyboardOperator === '/') return '÷'
-  if (keyboardOperator === '*') return '×'
-  if (keyboardOperator === '-') return '−'
-  if (keyboardOperator === '+') return '+'
+  if (keyboardOperator === '/') return '÷';
+  if (keyboardOperator === '*') return '×';
+  if (keyboardOperator === '-') return '−';
+  if (keyboardOperator === '+') return '+';
 }
+
+window.addEventListener('keydown', handleKeyboardInput);

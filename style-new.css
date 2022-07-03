@@ -180,12 +180,15 @@ button:hover {
     grid-column: 1 / span 4;
     grid-row: 1 / span 1;
     font-family: 'VT323', monospace;
-    font-size: 2rem;
     color: var(--off-white);
     background-color: var(--mid-purp);
     border-radius: 20px;
     margin-bottom: 2%;
     padding: 2% 5%;
+}
+
+.input-display p {
+    font-size: 2rem;
 }
 
 .top-buttons {
