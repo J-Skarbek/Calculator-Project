@@ -1,3 +1,4 @@
+let inputValue;
 let inputOne;
 let inputTwo;
 let inputThree;
@@ -14,15 +15,36 @@ const divideButton = document.getElementById('divide');
 const addButton = document.getElementById('add');
 const subtractButton = document.getElementById('subtract');
 const inputField = document.getElementById('display');
-
 const numberButtons = Array.from(document.querySelectorAll('.number'));
+
+
 numberButtons.forEach(button => {
   button.addEventListener('click', (e) => {
     console.log(e.target.value);
-    inputOne = e.target.value;
-    inputField.textContent = `${inputOne}`;
-  });  
+    inputValue = e.target.value;
+    inputField.textContent += `${inputValue}`;
+  });
+  
+  button.addEventListener('keydown', (e) => {
+    console.log(e.key);
+    inputValue = e.key;
+    inputField.textContent += `${inputValue}`;
+  });
 });
+
+
+
+clearButton.addEventListener('click', () => {
+  inputField.textContent = '';
+});
+
+onClearButton.addEventListener('click', () => {
+  inputField.textContent = '';
+});
+
+deleteButton.addEventListener('click',() => {
+
+})
 
 const functionButtons = document.querySelectorAll('.funct-button');
 
@@ -67,4 +89,4 @@ function convertOperator(keyboardOperator) {
   if (keyboardOperator === '+') return '+';
 }
 
-window.addEventListener('keydown', handleKeyboardInput);
+// window.addEventListener('keydown', handleKeyboardInput);
