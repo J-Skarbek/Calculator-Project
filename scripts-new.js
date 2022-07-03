@@ -15,16 +15,15 @@ const divideButton = document.getElementById('divide');
 const addButton = document.getElementById('add');
 const subtractButton = document.getElementById('subtract');
 const inputField = document.getElementById('display');
+const operationButtons = Array.from(document.querySelectorAll('.operator'));
 const numberButtons = Array.from(document.querySelectorAll('.number'));
-
 
 numberButtons.forEach(button => {
   button.addEventListener('click', (e) => {
     console.log(e.target.value);
     inputValue = e.target.value;
     inputField.textContent += `${inputValue}`;
-  });
-  
+  });  
   button.addEventListener('keydown', (e) => {
     console.log(e.key);
     inputValue = e.key;
@@ -32,7 +31,14 @@ numberButtons.forEach(button => {
   });
 });
 
-
+operationButtons.forEach(button => {
+  button.addEventListener('click', (e) => {
+    console.log(e.target.value);
+  });
+  button.addEventListener('keydown', (e) => {
+    console.log(e.key);
+  });
+})
 
 clearButton.addEventListener('click', () => {
   inputField.textContent = '';
@@ -45,6 +51,8 @@ onClearButton.addEventListener('click', () => {
 deleteButton.addEventListener('click',() => {
 
 })
+
+
 
 const functionButtons = document.querySelectorAll('.funct-button');
 
