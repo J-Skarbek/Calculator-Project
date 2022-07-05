@@ -59,10 +59,12 @@ const deleteKey = () => {
     console.log(typeof deleteValue);
     console.log(deleteValue);
     inputOne = deleteValue;
+    // inputOne.textContent = inputOne.slice(-1);
+    return inputOne;
   } else {
     deleteKey();
-  }
-}
+  };
+};
 
 const functionButtons = document.querySelectorAll('.funct-button');
 
@@ -91,22 +93,29 @@ const divide = (inputOne, inputTwo) => {
 
 function handleKeyboardInput(e) {
   if (e.key >= 0 && e.key <= 9) appendNumber(e.key);
-  if (e.key === '.') appendDecimal();
-  if (e.key === '=' || e.key === 'Enter') evaluate();
+  // if (e.key === '.') appendDecimal();
+  // if (e.key === '=' || e.key === 'Enter') evaluate();
   // if (e.key === 'Backspace') deleteNumber();
   // if (e.key === 'Escape') clear();
-  if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
-      setOperation(convertOperator(e.key))
-  };
+  // if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+  //     setOperation(convertOperator(e.key))
+  // };
 }
 
-function convertOperator(keyboardOperator) {
-  if (keyboardOperator === '/') return '÷';
-  if (keyboardOperator === '*') return '×';
-  if (keyboardOperator === '-') return '−';
-  if (keyboardOperator === '+') return '+';
+function appendNumber(e) {
+  if (e.key >= 0 && e.key <= 9) {
+    inputOne = inputField.textContent += `${e.key}`;
+    console.log(e);
+    return inputOne;
+  }
 }
+
+// function convertOperator(keyboardOperator) {
+//   if (keyboardOperator === '/') return '÷';
+//   if (keyboardOperator === '*') return '×';
+//   if (keyboardOperator === '-') return '−';
+//   if (keyboardOperator === '+') return '+';
+// }
 
 deleteButton.addEventListener('click', deleteKey);
-
-// window.addEventListener('keydown', handleKeyboardInput);
+window.addEventListener('keydown', appendNumber);
