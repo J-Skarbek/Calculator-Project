@@ -33,24 +33,36 @@ numberButtons.forEach(button => {
 
 operationButtons.forEach(button => {
   button.addEventListener('click', (e) => {
-    console.log(e.key);
+    console.log(e.target.value);
   });
   button.addEventListener('keydown', (e) => {
     console.log(e.key);
   });
-})
+});
 
 clearButton.addEventListener('click', () => {
   inputField.textContent = '';
+  inputOne = 0;
 });
 
 onClearButton.addEventListener('click', () => {
   inputField.textContent = '';
+  inputOne = 0;
 });
 
-deleteButton.addEventListener('click',() => {
-  inputOne.slice(-1).textContent;
-});
+const deleteKey = () => {
+  if (inputOne == undefined || inputOne == '') {
+    alert("error");
+    return;
+  } else if (inputOne) {
+    let deleteValue = inputOne.slice(0, inputOne.length - 1);
+    console.log(typeof deleteValue);
+    console.log(deleteValue);
+    inputOne = deleteValue;
+  } else {
+    deleteKey();
+  }
+}
 
 const functionButtons = document.querySelectorAll('.funct-button');
 
@@ -94,5 +106,7 @@ function convertOperator(keyboardOperator) {
   if (keyboardOperator === '-') return '−';
   if (keyboardOperator === '+') return '+';
 }
+
+deleteButton.addEventListener('click', deleteKey);
 
 // window.addEventListener('keydown', handleKeyboardInput);

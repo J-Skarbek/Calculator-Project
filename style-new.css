@@ -109,14 +109,6 @@ button:hover {
     background-color: var(--mid-purp);
 }
 
-/* input[type="number"] {
-    font-family: 'VT323', monospace;
-    font-size: 1.5rem;
-    color: var(--off-white);
-    background-color: var(--mid-purp);
-    border-radius: 20px;
-} */
-
 .top-buttons > button {
     min-width: 49%;
 }
@@ -221,6 +213,3 @@ button:hover {
     grid-column: 1 / span 12;
     grid-row: 11 / span 2;
 }
-
-/*Calc display font: {font-family: 'VT323', monospace;} */
-
