@@ -59,7 +59,7 @@ const deleteKey = () => {
     console.log(typeof deleteValue);
     console.log(deleteValue);
     inputOne = deleteValue;
-    // inputOne.textContent = inputOne.slice(-1);
+    inputField.textContent = `${deleteValue}`;
     return inputOne;
   } else {
     deleteKey();
