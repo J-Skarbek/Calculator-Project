@@ -15,39 +15,50 @@ const divideButton = document.getElementById('divide');
 const addButton = document.getElementById('add');
 const subtractButton = document.getElementById('subtract');
 const inputField = document.getElementById('display');
+const priorInput = document.getElementById('prior-input');
 const operationButtons = Array.from(document.querySelectorAll('.operator'));
 const numberButtons = Array.from(document.querySelectorAll('.number'));
 
 numberButtons.forEach(button => {
   button.addEventListener('click', (e) => {
-    console.log(e.target.value);
-    inputValue = e.target.value;
-    inputOne = inputField.textContent += `${inputValue}`;
+    if (e.target.value === '.') {
+        console.log('No deicmal support yet.')
+    } else {
+      console.log(e.target.value);
+      inputValue = e.target.value;
+      inputOne = inputField.textContent += `${inputValue}`;
+    }
   });  
-  button.addEventListener('keydown', (e) => {
-    console.log(e.key);
-    inputValue = e.key;
-    inputOne = inputField.textContent += `${inputValue}`;
-  });
+  // button.addEventListener('keydown', (e) => {
+  //   console.log(e.key);
+  //   inputValue = e.key;
+  //   inputOne = inputField.textContent += `${inputValue}`;
+  // });
 });
 
 operationButtons.forEach(button => {
   button.addEventListener('click', (e) => {
     console.log(e.target.value);
+    operate();
   });
   button.addEventListener('keydown', (e) => {
     console.log(e.key);
+    operate();
   });
 });
 
 clearButton.addEventListener('click', () => {
   inputField.textContent = '';
+  priorInput.textContent = '';
   inputOne = 0;
+  inputTwo = 0;
 });
 
 onClearButton.addEventListener('click', () => {
   inputField.textContent = '';
+  priorInput.textContent = '';
   inputOne = 0;
+  inputTwo = 0;
 });
 
 const deleteKey = () => {
@@ -66,13 +77,17 @@ const deleteKey = () => {
   };
 };
 
-const functionButtons = document.querySelectorAll('.funct-button');
-
-const lastOperationScreen = document.getElementById('lastOperationScreen');
-const currentOperationScreen = document.getElementById('currentOperationScreen');
+function operate() {
+  priorInput.textContent = inputField.textContent;
+  inputTwo = priorInput.textContent;
+  inputField.textContent = '';
+  inputOne = '';
+  console.log(inputOne, "inputOne");
+  console.log(inputTwo, "inputTwo");
+}
 
 const add = (inputOne, inputTwo) => {
-  let result = inputOne + inputTwo;
+  let result = Number(inputOne) + Number(inputTwo);
   return Number(result.toFixed(3));
 }
 
@@ -108,7 +123,18 @@ function appendNumber(e) {
     console.log(e);
     return inputOne;
   }
+  if (e.key === '.') {
+      console.log('No deicmal support yet.')
+  }
 }
+
+//   function appendDecimal() {
+//       if (inputField.includes('.')) {
+//           return;
+//       } else {
+//         inputField.textContent += `${e.key}`;
+//       }
+//   }
 
 // function convertOperator(keyboardOperator) {
 //   if (keyboardOperator === '/') return '÷';
