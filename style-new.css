@@ -104,6 +104,15 @@ button.operator{
     background-color: var(--yellow-accent);
 }
 
+#operate {
+    background-color: var(--yellow-accent);
+}
+
+#operate:hover {
+    color: var(--off-white);
+    background-color: var(--mid-purp);
+}
+
 button:hover {
     color: var(--off-white);
     background-color: var(--mid-purp);
