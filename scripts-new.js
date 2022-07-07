@@ -2,7 +2,8 @@ let inputValue;
 let inputOne;
 let inputTwo;
 let inputThree;
-let currentOperation = null;
+let result;
+let currentOperation;
 let shouldResetScreen = false;
 
 const deleteButton = document.getElementById('delete');
@@ -66,11 +67,16 @@ returnButton.addEventListener('click', validityCheck)
 returnButton.addEventListener('keydown', validityCheck)
 
 function validityCheck() {
-    operate(inputOne, inputTwo);
-    console.log(inputOne, "inputOne");
-    console.log(inputTwo, "inputTwo");
-    console.log(currentOperation, "operation");
-    console.log(add(inputOne, inputTwo), "result")
+  if (currentOperation === '+') {
+    result = inputField.textContent = add(inputOne, inputTwo);
+  } else if (currentOperation === '-') {
+    result = inputField.textContent = subtract(inputOne, inputTwo);
+  } else if (currentOperation === 'x') {
+    result = inputField.textContent = multiply(inputOne, inputTwo);
+  } else if (currentOperation === '/') {
+    result = inputField.textContent = divide(inputOne, inputTwo);
+  }
+  priorInput.textContent = ''
 }
 
 function nextInput() {
@@ -118,18 +124,6 @@ const divide = (inputOne, inputTwo) => {
   return Number(result.toFixed(3));
 }
 
-function operate(inputOne, inputTwo) {
-  if (currentOperation === '+') {
-    add(inputOne, inputTwo);
-  } else if (currentOperation === 'x') {
-    multiply(inputOne, inputTwo);
-  } else if (currentOperation === '-') {
-    subtract(inputOne, inputTwo);
-  } else if (currentOperation === '/') {
-    divide(inputOne, inputTwo);
-  } 
-}
-
 function keyBoardInput(e) {
   if (e.key >= 0 && e.key <= 9) {
     inputOne = inputField.textContent += `${e.key}`;
@@ -151,88 +145,16 @@ function keyBoardInput(e) {
   return inputOne;
 }
 
+function handleClickOperators(e) {
+  if (e.target.value === '/' || e.target.value === '*' || e.target.value === '+' || e.target.value === '-') {
+    if (operatorDisplay.textContent == '') {
+      operatorDisplay.textContent += `${e.target.value}`;
+      currentOperation = e.key;
+    } else {
+      alert("You can only use one operator at a time.")
+    }
+  }
+}
+
 deleteButton.addEventListener('click', deleteKey);
-// window.addEventListener('click', clickInput);
 window.addEventListener('keydown', keyBoardInput);
-
-
-
-
-
-
-
-
-
-
-
-// const evaluate = (e) => {
-//   if (e.key === '/' && inputOne == '0') {
-//     alert("You can't divide by zero!");
-//   } else if (e.key === '/') {
-//     divide(inputOne, inputTwo);
-//   } else if (e.key === '*') {
-//     multipy(inputOne, inputTwo);
-//   } else if (e.key === '-') {
-//     subtract(inputOne, inputTwo);
-//   } else if (e.key === '+') {
-//     add(inputOne, inputTwo);
-//   } else {
-//     alert("You need to enter some numbers.")
-//   }
-// };
-
-
-
-//   function appendDecimal() {
-//       if (inputField.includes('.')) {
-//           return;
-//       } else {
-//         inputField.textContent += `${e.key}`;
-//       }
-//   }
-
-// function convertOperator(e) {
-//   if (e.key === '/') {
-//     inputOne = inputField.textContent += '÷';
-//   }
-//   if (e.key === '*') {
-//     inputOne = inputField.textContent += '×';
-//   }
-//   if (e.key === '-') {
-//     inputOne = inputField.textContent += '-';
-//   }
-//   if (e.key === '+') {
-//     inputOne = inputField.textContent += '+';
-//   }
-// }
-
-// function handleKeyboardInput(e) {
-//   if (e.key >= 0 && e.key <= 9) appendNumber(e.key);
-  // if (e.key === '.') appendDecimal();
-  // if (e.key === '=' || e.key === 'Enter') evaluate();
-  // if (e.key === 'Backspace') deleteNumber();
-  // if (e.key === 'Escape') clear();
-  // if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
-  //     setOperation(convertOperator(e.key))
-  // };
-// }
-
-// function handleOperators(e) {
-  //   if (e.key === '/' || e.key === '*' || e.key === '+' || e.key === '-') {
-  //     if (operatorDisplay.textContent == '') {
-  //       operatorDisplay.textContent += `${e.key}`;
-  //       currentOperation = e.key;
-  //     } else {
-  //       alert("You can only use one operator at a time.")
-  //     }
-  //   }
-  //   if (e.target.value === '/' || e.target.value === '*' || e.target.value === '+' || e.target.value === '-') {
-  //     if (operatorDisplay.textContent == '') {
-  //       operatorDisplay.textContent += `${e.target.value}`;
-  //       currentOperation = e.target.value;
-  //     } else {
-  //       alert("You can only use one operator at a time.")
-  //     }
-  //   }
-  // }
-  
