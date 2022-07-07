@@ -17,6 +17,8 @@ const subtractButton = document.getElementById('subtract');
 const inputField = document.getElementById('display');
 const priorInput = document.getElementById('prior-input');
 const operationButtons = Array.from(document.querySelectorAll('.operator'));
+const operatorDisplay = document.getElementById('operator-symbol');
+const returnButton = document.getElementById('operate');
 const numberButtons = Array.from(document.querySelectorAll('.number'));
 
 numberButtons.forEach(button => {
@@ -29,37 +31,45 @@ numberButtons.forEach(button => {
       inputOne = inputField.textContent += `${inputValue}`;
     }
   });  
-  // button.addEventListener('keydown', (e) => {
-  //   console.log(e.key);
-  //   inputValue = e.key;
-  //   inputOne = inputField.textContent += `${inputValue}`;
-  // });
 });
 
 operationButtons.forEach(button => {
   button.addEventListener('click', (e) => {
     console.log(e.target.value);
-    operate();
+    nextInput();
   });
   button.addEventListener('keydown', (e) => {
     console.log(e.key);
-    operate();
+    nextInput();
   });
 });
 
 clearButton.addEventListener('click', () => {
   inputField.textContent = '';
   priorInput.textContent = '';
+  operatorDisplay.textContent = '';
   inputOne = 0;
   inputTwo = 0;
+  currentOperation = null;
 });
 
 onClearButton.addEventListener('click', () => {
   inputField.textContent = '';
   priorInput.textContent = '';
+  operatorDisplay.textContent = '';
   inputOne = 0;
   inputTwo = 0;
+  currentOperation = null;
 });
+
+function nextInput() {
+  priorInput.textContent = inputField.textContent;
+  inputTwo = priorInput.textContent;
+  inputField.textContent = '';
+  inputOne = '';
+  console.log(inputOne, "inputOne");
+  console.log(inputTwo, "inputTwo");
+}
 
 const deleteKey = () => {
   if (inputOne == undefined || inputOne == '') {
@@ -77,56 +87,74 @@ const deleteKey = () => {
   };
 };
 
-function operate() {
-  priorInput.textContent = inputField.textContent;
-  inputTwo = priorInput.textContent;
-  inputField.textContent = '';
-  inputOne = '';
-  console.log(inputOne, "inputOne");
-  console.log(inputTwo, "inputTwo");
-}
-
 const add = (inputOne, inputTwo) => {
   let result = Number(inputOne) + Number(inputTwo);
   return Number(result.toFixed(3));
 }
 
 const subtract = (inputOne, inputTwo) => {
-  let result = inputOne - inputTwo;
+  let result = Number(inputOne) - Number(inputTwo);
   return Number(result.toFixed(3));
 }
 
 const multiply = (inputOne, inputTwo) => {
-  let result = inputOne * inputTwo;
+  let result = Number(inputOne) * Number(inputTwo);
   return Number(result.toFixed(3));
 }
 
 const divide = (inputOne, inputTwo) => {
-  let result = inputOne / inputTwo;
+  let result = Number(inputTwo) / Number(inputOne);
   return Number(result.toFixed(3));
-}
-
-function handleKeyboardInput(e) {
-  if (e.key >= 0 && e.key <= 9) appendNumber(e.key);
-  // if (e.key === '.') appendDecimal();
-  // if (e.key === '=' || e.key === 'Enter') evaluate();
-  // if (e.key === 'Backspace') deleteNumber();
-  // if (e.key === 'Escape') clear();
-  // if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
-  //     setOperation(convertOperator(e.key))
-  // };
 }
 
 function appendNumber(e) {
   if (e.key >= 0 && e.key <= 9) {
     inputOne = inputField.textContent += `${e.key}`;
     console.log(e);
-    return inputOne;
-  }
+  };
+  if (e.key === '/' || e.key === '*' || e.key === '+' || e.key === '-') {
+    if (operatorDisplay.textContent == '') {
+      operatorDisplay.textContent += `${e.key}`;
+      currentOperation = e.key;
+    } else {
+      alert("You can only use one operator at a time.")
+    }
+    nextInput()
+    console.log(e);
+  };
   if (e.key === '.') {
-      console.log('No deicmal support yet.')
-  }
+    console.log('No deicmal support yet.')
+  };
+  return inputOne;
 }
+
+deleteButton.addEventListener('click', deleteKey);
+window.addEventListener('keydown', appendNumber);
+
+
+
+
+
+
+
+
+// const evaluate = (e) => {
+//   if (e.key === '/' && inputOne == '0') {
+//     alert("You can't divide by zero!");
+//   } else if (e.key === '/') {
+//     divide(inputOne, inputTwo);
+//   } else if (e.key === '*') {
+//     multipy(inputOne, inputTwo);
+//   } else if (e.key === '-') {
+//     subtract(inputOne, inputTwo);
+//   } else if (e.key === '+') {
+//     add(inputOne, inputTwo);
+//   } else {
+//     alert("You need to enter some numbers.")
+//   }
+// };
+
+
 
 //   function appendDecimal() {
 //       if (inputField.includes('.')) {
@@ -136,12 +164,28 @@ function appendNumber(e) {
 //       }
 //   }
 
-// function convertOperator(keyboardOperator) {
-//   if (keyboardOperator === '/') return '÷';
-//   if (keyboardOperator === '*') return '×';
-//   if (keyboardOperator === '-') return '−';
-//   if (keyboardOperator === '+') return '+';
+// function convertOperator(e) {
+//   if (e.key === '/') {
+//     inputOne = inputField.textContent += '÷';
+//   }
+//   if (e.key === '*') {
+//     inputOne = inputField.textContent += '×';
+//   }
+//   if (e.key === '-') {
+//     inputOne = inputField.textContent += '-';
+//   }
+//   if (e.key === '+') {
+//     inputOne = inputField.textContent += '+';
+//   }
 // }
 
-deleteButton.addEventListener('click', deleteKey);
-window.addEventListener('keydown', appendNumber);
+// function handleKeyboardInput(e) {
+//   if (e.key >= 0 && e.key <= 9) appendNumber(e.key);
+  // if (e.key === '.') appendDecimal();
+  // if (e.key === '=' || e.key === 'Enter') evaluate();
+  // if (e.key === 'Backspace') deleteNumber();
+  // if (e.key === 'Escape') clear();
+  // if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+  //     setOperation(convertOperator(e.key))
+  // };
+// }
