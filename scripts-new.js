@@ -32,18 +32,11 @@ numberButtons.forEach(button => {
       inputOne = inputField.textContent += `${inputValue}`;
     }
   });  
-});
+})
 
 operationButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
-    console.log(e.target.value);
-    nextInput();
-  });
-  button.addEventListener('keydown', (e) => {
-    console.log(e.key);
-    nextInput();
-  });
-});
+  button.addEventListener('click', handleClickOperators)
+})
 
 clearButton.addEventListener('click', () => {
   inputField.textContent = '';
@@ -52,7 +45,7 @@ clearButton.addEventListener('click', () => {
   inputOne = 0;
   inputTwo = 0;
   currentOperation = null;
-});
+})
 
 onClearButton.addEventListener('click', () => {
   inputField.textContent = '';
@@ -61,7 +54,7 @@ onClearButton.addEventListener('click', () => {
   inputOne = 0;
   inputTwo = 0;
   currentOperation = null;
-});
+})
 
 returnButton.addEventListener('click', validityCheck)
 returnButton.addEventListener('keydown', validityCheck)
@@ -149,10 +142,12 @@ function handleClickOperators(e) {
   if (e.target.value === '/' || e.target.value === '*' || e.target.value === '+' || e.target.value === '-') {
     if (operatorDisplay.textContent == '') {
       operatorDisplay.textContent += `${e.target.value}`;
-      currentOperation = e.key;
+      currentOperation = e.target.value;
     } else {
       alert("You can only use one operator at a time.")
     }
+    nextInput()
+    console.log(e);
   }
 }
 
