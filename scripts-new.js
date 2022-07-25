@@ -31,7 +31,7 @@ numberButtons.forEach(button => {
       inputValue = e.target.value;
       inputOne = inputField.textContent += `${inputValue}`;
     }
-  });  
+  })
 })
 
 operationButtons.forEach(button => {
@@ -70,6 +70,7 @@ function validityCheck() {
     result = inputField.textContent = divide(inputOne, inputTwo);
   }
   priorInput.textContent = ''
+  operatorDisplay.textContent = ''
 }
 
 function nextInput() {
@@ -103,7 +104,7 @@ const add = (inputOne, inputTwo) => {
 }
 
 const subtract = (inputOne, inputTwo) => {
-  let result = Number(inputOne) - Number(inputTwo);
+  let result = Number(inputTwo) - Number(inputOne);
   return Number(result.toFixed(3));
 }
 
@@ -127,13 +128,13 @@ function keyBoardInput(e) {
       operatorDisplay.textContent += `${e.key}`;
       currentOperation = e.key;
     } else {
-      alert("You can only use one operator at a time.")
+      alert(`You can only use one operator at a time.`)
     }
     nextInput()
     console.log(e);
   };
   if (e.key === '.') {
-    console.log('No deicmal support yet.')
+    console.log(`No deicmal support yet.`)
   };
   return inputOne;
 }
