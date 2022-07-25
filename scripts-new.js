@@ -57,7 +57,14 @@ onClearButton.addEventListener('click', () => {
 })
 
 returnButton.addEventListener('click', validityCheck)
-returnButton.addEventListener('keydown', validityCheck)
+// returnButton.addEventListener('keydown', validityCheck)
+
+// returnButton.addEventListener('keydown', (e) => {
+//   if (e.key === 'Enter' && inputOne == true && inputTwo == true) { 
+//     validityCheck()
+//     console.log(e)
+//   }
+// })
 
 function validityCheck() {
   if (currentOperation === '+') {
@@ -136,6 +143,10 @@ function keyBoardInput(e) {
   if (e.key === '.') {
     console.log(`No deicmal support yet.`)
   };
+
+  if (e.key === 'enter') {
+    validityCheck()
+  }
   return inputOne;
 }
 
