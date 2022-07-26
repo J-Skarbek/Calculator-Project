@@ -71,7 +71,7 @@ function validityCheck() {
     result = inputField.textContent = add(inputOne, inputTwo);
   } else if (currentOperation === '-') {
     result = inputField.textContent = subtract(inputOne, inputTwo);
-  } else if (currentOperation === 'x') {
+  } else if (currentOperation === '*') {
     result = inputField.textContent = multiply(inputOne, inputTwo);
   } else if (currentOperation === '/') {
     result = inputField.textContent = divide(inputOne, inputTwo);
