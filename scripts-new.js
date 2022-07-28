@@ -57,12 +57,14 @@ onClearButton.addEventListener('click', () => {
 })
 
 returnButton.addEventListener('click', validityCheck)
-// returnButton.addEventListener('keydown', validityCheck)
 
 // returnButton.addEventListener('keydown', (e) => {
-//   if (e.key === 'Enter' && inputOne == true && inputTwo == true) { 
+//   if (e.key === 'Enter') { 
 //     validityCheck()
 //     console.log(e)
+//     console.log(inputOne)
+//     console.log(inputTwo)
+//     console.log(currentOperation)
 //   }
 // })
 
@@ -102,8 +104,8 @@ const deleteKey = () => {
     return inputOne;
   } else {
     deleteKey();
-  };
-};
+  }
+}
 
 const add = (inputOne, inputTwo) => {
   let result = Number(inputOne) + Number(inputTwo);
@@ -144,9 +146,6 @@ function keyBoardInput(e) {
     console.log(`No deicmal support yet.`)
   };
 
-  if (e.key === 'enter') {
-    validityCheck()
-  }
   return inputOne;
 }
 
@@ -165,3 +164,14 @@ function handleClickOperators(e) {
 
 deleteButton.addEventListener('click', deleteKey);
 window.addEventListener('keydown', keyBoardInput);
+
+//I beleive this below fixes the enter button issue -- need to look into what root cause is though
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+      validityCheck()
+      console.log(inputOne)
+      console.log(inputTwo)
+      console.log(currentOperation)
+  }
+})
