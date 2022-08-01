@@ -38,35 +38,19 @@ operationButtons.forEach(button => {
   button.addEventListener('click', handleClickOperators)
 })
 
-clearButton.addEventListener('click', () => {
-  inputField.textContent = '';
-  priorInput.textContent = '';
-  operatorDisplay.textContent = '';
-  inputOne = 0;
-  inputTwo = 0;
-  currentOperation = null;
-})
-
-onClearButton.addEventListener('click', () => {
-  inputField.textContent = '';
-  priorInput.textContent = '';
-  operatorDisplay.textContent = '';
-  inputOne = 0;
-  inputTwo = 0;
-  currentOperation = null;
-})
+clearButton.addEventListener('click', clearAllInputs)
+onClearButton.addEventListener('click', clearAllInputs)
 
 returnButton.addEventListener('click', validityCheck)
 
-// returnButton.addEventListener('keydown', (e) => {
-//   if (e.key === 'Enter') { 
-//     validityCheck()
-//     console.log(e)
-//     console.log(inputOne)
-//     console.log(inputTwo)
-//     console.log(currentOperation)
-//   }
-// })
+function clearAllInputs() {
+  inputField.textContent = '';
+  priorInput.textContent = '';
+  operatorDisplay.textContent = '';
+  inputOne = 0;
+  inputTwo = 0;
+  currentOperation = null;
+}
 
 function validityCheck() {
   if (currentOperation === '+') {
@@ -109,7 +93,7 @@ const deleteKey = () => {
 
 const add = (inputOne, inputTwo) => {
   let result = Number(inputOne) + Number(inputTwo);
-  return result;
+  return Number(result.toFixed(3));
 }
 
 const subtract = (inputOne, inputTwo) => {
@@ -145,8 +129,12 @@ function keyBoardInput(e) {
   if (e.key === '.') {
     console.log(`No deicmal support yet.`)
   };
-
-  return inputOne;
+  if (e.key === 'Enter') {
+    validityCheck()
+    console.log(inputOne)
+    console.log(inputTwo)
+    console.log(currentOperation)
+  };
 }
 
 function handleClickOperators(e) {
@@ -164,14 +152,3 @@ function handleClickOperators(e) {
 
 deleteButton.addEventListener('click', deleteKey);
 window.addEventListener('keydown', keyBoardInput);
-
-//I beleive this below fixes the enter button issue -- need to look into what root cause is though
-
-window.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-      validityCheck()
-      console.log(inputOne)
-      console.log(inputTwo)
-      console.log(currentOperation)
-  }
-})
