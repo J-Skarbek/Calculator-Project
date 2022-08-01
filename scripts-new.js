@@ -53,7 +53,10 @@ function clearAllInputs() {
 }
 
 function validityCheck() {
-  if (currentOperation === '+') {
+  if (currentOperation === '/' && inputOne === '0') {
+    alert("Sorry, you can't divide by zero!")
+    clearAllInputs()
+  } else if (currentOperation === '+') {
     result = inputField.textContent = add(inputOne, inputTwo);
   } else if (currentOperation === '-') {
     result = inputField.textContent = subtract(inputOne, inputTwo);
@@ -78,14 +81,14 @@ function nextInput() {
 const deleteKey = () => {
   if (inputOne == undefined || inputOne == '') {
     alert("error");
-    return;
+    // return;
   } else if (inputOne) {
     let deleteValue = inputOne.slice(0, inputOne.length - 1);
     console.log(typeof deleteValue);
     console.log(deleteValue);
     inputOne = deleteValue;
     inputField.textContent = `${deleteValue}`;
-    return inputOne;
+    // return inputOne;
   } else {
     deleteKey();
   }
