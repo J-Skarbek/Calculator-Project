@@ -24,10 +24,11 @@ const numberButtons = Array.from(document.querySelectorAll('.number'));
 
 numberButtons.forEach(button => {
   button.addEventListener('click', (e) => {
-    if (e.target.value === '.' && inputField.textContent.includes('.') === false) {
-      inputField.textContent += `${e.target.value}`
+    if (e.target.value === '.') {
+      if (inputField.textContent.includes('.') === false) {
+        inputField.textContent += `${e.target.value}`
+      }
     } else {
-      console.log(e.target.value);
       inputValue = e.target.value;
       inputOne = inputField.textContent += `${inputValue}`;
     }
