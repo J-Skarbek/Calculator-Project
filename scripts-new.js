@@ -24,8 +24,8 @@ const numberButtons = Array.from(document.querySelectorAll('.number'));
 
 numberButtons.forEach(button => {
   button.addEventListener('click', (e) => {
-    if (e.target.value === '.') {
-        console.log('No deicmal support yet.')
+    if (e.target.value === '.' && inputField.textContent.includes('.') === false) {
+      inputField.textContent += `${e.target.value}`
     } else {
       console.log(e.target.value);
       inputValue = e.target.value;
@@ -129,8 +129,8 @@ function keyBoardInput(e) {
     nextInput()
     console.log(e);
   };
-  if (e.key === '.') {
-    console.log(`No deicmal support yet.`)
+  if (e.key === '.' && inputField.textContent.includes('.') === false) {
+    inputField.textContent += `${e.key}`
   };
   if (e.key === 'Enter') {
     validityCheck()
