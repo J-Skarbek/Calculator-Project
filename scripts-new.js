@@ -1,10 +1,8 @@
 let inputValue;
 let inputOne;
 let inputTwo;
-let inputThree;
 let result;
 let currentOperation;
-let shouldResetScreen = false;
 
 const deleteButton = document.getElementById('delete');
 const clearButton = document.getElementById('clear');
@@ -27,10 +25,12 @@ numberButtons.forEach(button => {
     if (e.target.value === '.') {
       if (inputField.textContent.includes('.') === false) {
         inputField.textContent += `${e.target.value}`
+        button.blur()
       }
     } else {
       inputValue = e.target.value;
       inputOne = inputField.textContent += `${inputValue}`;
+      button.blur()
     }
   })
 })
@@ -41,8 +41,48 @@ operationButtons.forEach(button => {
 
 clearButton.addEventListener('click', clearAllInputs)
 onClearButton.addEventListener('click', clearAllInputs)
+deleteButton.addEventListener('click', deleteKey)
+window.addEventListener('keydown', keyBoardInput)
 
-returnButton.addEventListener('click', validityCheck)
+function keyBoardInput(e) {
+  if (e.key >= 0 && e.key <= 9) {
+    inputOne = inputField.textContent += `${e.key}`;
+  }
+  if (e.key === '/' || e.key === '*' || e.key === '+' || e.key === '-') {
+    if (operatorDisplay.textContent == '') {
+      operatorDisplay.textContent += `${e.key}`;
+      currentOperation = e.key;
+    } else {
+      alert(`You can only use one operator at a time.`)
+    }
+    nextInput()
+  }
+  if (e.key === '.' && inputField.textContent.includes('.') === false) {
+    inputField.textContent += `${e.key}`
+  }
+  if (e.key === 'Enter') {
+    validityCheck()
+  }
+  if (e.key === 'Delete' || e.key === 'Backspace') {
+    deleteKey()
+  }
+  if (e.key === 'Clear') {
+    clearAllInputs()
+  }
+}
+
+function handleClickOperators(e) {
+  if (e.target.value === '/' || e.target.value === '*' || e.target.value === '+' || e.target.value === '-') {
+    if (operatorDisplay.textContent == '') {
+      operatorDisplay.textContent += `${e.target.value}`;
+      currentOperation = e.target.value;
+    } else {
+      alert("You can only use one operator at a time.")
+    }
+    nextInput()
+
+  }
+}
 
 function clearAllInputs() {
   inputField.textContent = '';
@@ -77,24 +117,18 @@ function nextInput() {
   inputTwo = priorInput.textContent;
   inputField.textContent = '';
   inputOne = '';
-  console.log(inputOne, "inputOne");
-  console.log(inputTwo, "inputTwo");
 }
 
-const deleteKey = () => {
+function deleteKey() {
   if (inputOne == undefined || inputOne == '') {
     alert("error");
-    // return;
   } else if (inputOne) {
     let deleteValue = inputOne.slice(0, inputOne.length - 1);
-    console.log(typeof deleteValue);
-    console.log(deleteValue);
     inputOne = deleteValue;
     inputField.textContent = `${deleteValue}`;
     deleteButton.blur()
-    // return inputOne;
   } else {
-    deleteKey();
+    deleteKey()
   }
 }
 
@@ -117,46 +151,3 @@ const divide = (inputOne, inputTwo) => {
   let result = Number(inputTwo) / Number(inputOne);
   return Number(result.toFixed(3));
 }
-
-function keyBoardInput(e) {
-  if (e.key >= 0 && e.key <= 9) {
-    inputOne = inputField.textContent += `${e.key}`;
-    console.log(e);
-  };
-  if (e.key === '/' || e.key === '*' || e.key === '+' || e.key === '-') {
-    if (operatorDisplay.textContent == '') {
-      operatorDisplay.textContent += `${e.key}`;
-      currentOperation = e.key;
-    } else {
-      alert(`You can only use one operator at a time.`)
-    }
-    nextInput()
-    console.log(e);
-  };
-  if (e.key === '.' && inputField.textContent.includes('.') === false) {
-    inputField.textContent += `${e.key}`
-  };
-  if (e.key === 'Enter') {
-    validityCheck()
-    console.log(inputOne)
-    console.log(inputTwo)
-    console.log(currentOperation)
-  };
-}
-
-function handleClickOperators(e) {
-  if (e.target.value === '/' || e.target.value === '*' || e.target.value === '+' || e.target.value === '-') {
-    if (operatorDisplay.textContent == '') {
-      operatorDisplay.textContent += `${e.target.value}`;
-      currentOperation = e.target.value;
-    } else {
-      alert("You can only use one operator at a time.")
-    }
-    nextInput()
-    console.log(e);
-  }
-
-}
-
-deleteButton.addEventListener('click', deleteKey);
-window.addEventListener('keydown', keyBoardInput);
