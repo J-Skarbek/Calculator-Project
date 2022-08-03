@@ -51,6 +51,8 @@ function clearAllInputs() {
   inputOne = 0;
   inputTwo = 0;
   currentOperation = null;
+  clearButton.blur()
+  onClearButton.blur()
 }
 
 function validityCheck() {
@@ -89,6 +91,7 @@ const deleteKey = () => {
     console.log(deleteValue);
     inputOne = deleteValue;
     inputField.textContent = `${deleteValue}`;
+    deleteButton.blur()
     // return inputOne;
   } else {
     deleteKey();
@@ -152,6 +155,7 @@ function handleClickOperators(e) {
     nextInput()
     console.log(e);
   }
+
 }
 
 deleteButton.addEventListener('click', deleteKey);
