@@ -226,3 +226,17 @@ button:hover {
     grid-column: 1 / span 12;
     grid-row: 11 / span 2;
 }
+
+/*media queries*/
+
+@media only screen and (max-width: 414px) {
+    .project-container,
+    .body {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 3rem;
+    }
+}

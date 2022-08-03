@@ -80,7 +80,6 @@ function handleClickOperators(e) {
       alert("You can only use one operator at a time.")
     }
     nextInput()
-
   }
 }
 
